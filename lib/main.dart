@@ -91,7 +91,7 @@ class _BiorhythmHomePageState extends State<BiorhythmHomePage> {
   String _formatPercentageWithState(double value, AppLocalizations l10n) {
     final percentage = (value * 100).round();
     final state = value >= 0 ? l10n.active : l10n.passive;
-    return '$percentage% ($state)';
+    return '$percentage% $state';
   }
 
   String _getBiorhythmDescription(BuildContext context) {
