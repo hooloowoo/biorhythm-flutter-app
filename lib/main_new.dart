@@ -125,13 +125,13 @@ class _BiorhythmHomePageState extends State<BiorhythmHomePage> {
         : physical > -0.5
         ? l10n.descrPhysicalMid
         : l10n.descrPhysicalMin;
-    
+
     String emotionalDetailDesc = emotional > 0.5
         ? l10n.descrEmotionalMax
         : emotional > -0.5
         ? l10n.descrEmotionalMid
         : l10n.descrEmotionalMin;
-    
+
     String intellectualDetailDesc = intellectual > 0.5
         ? l10n.descrIntellectualMax
         : intellectual > -0.5

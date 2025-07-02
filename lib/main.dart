@@ -88,6 +88,12 @@ class _BiorhythmHomePageState extends State<BiorhythmHomePage> {
     return spots;
   }
 
+  String _formatPercentageWithState(double value, AppLocalizations l10n) {
+    final percentage = (value * 100).round();
+    final state = value >= 0 ? l10n.active : l10n.passive;
+    return '$percentage% ($state)';
+  }
+
   String _getBiorhythmDescription(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
 
@@ -127,37 +133,50 @@ class _BiorhythmHomePageState extends State<BiorhythmHomePage> {
         : l10n.medium;
 
     // Get conditional detailed descriptions based on critical points
-    String physicalDetailDesc = _getConditionalDetailedDescription(context, 'physical');
-    String emotionalDetailDesc = _getConditionalDetailedDescription(context, 'emotional');
-    String intellectualDetailDesc = _getConditionalDetailedDescription(context, 'intellectual');
+    String physicalDetailDesc = _getConditionalDetailedDescription(
+      context,
+      'physical',
+    );
+    String emotionalDetailDesc = _getConditionalDetailedDescription(
+      context,
+      'emotional',
+    );
+    String intellectualDetailDesc = _getConditionalDetailedDescription(
+      context,
+      'intellectual',
+    );
 
     // Build detailed analysis section only for cycles that have content
     String detailedAnalysisSection = "";
-    bool hasAnyDetails = physicalDetailDesc.isNotEmpty || 
-                        emotionalDetailDesc.isNotEmpty || 
-                        intellectualDetailDesc.isNotEmpty;
-    
+    bool hasAnyDetails =
+        physicalDetailDesc.isNotEmpty ||
+        emotionalDetailDesc.isNotEmpty ||
+        intellectualDetailDesc.isNotEmpty;
+
     if (hasAnyDetails) {
       detailedAnalysisSection = "\n\n📋 ${l10n.detailedAnalysis}:\n";
-      
+
       if (physicalDetailDesc.isNotEmpty) {
-        detailedAnalysisSection += "\n🏃 ${l10n.physicalCycle}:\n$physicalDetailDesc\n";
+        detailedAnalysisSection +=
+            "\n🏃 ${l10n.physicalCycle}:\n$physicalDetailDesc\n";
       }
-      
+
       if (emotionalDetailDesc.isNotEmpty) {
-        detailedAnalysisSection += "\n❤️ ${l10n.emotionalCycle}:\n$emotionalDetailDesc\n";
+        detailedAnalysisSection +=
+            "\n❤️ ${l10n.emotionalCycle}:\n$emotionalDetailDesc\n";
       }
-      
+
       if (intellectualDetailDesc.isNotEmpty) {
-        detailedAnalysisSection += "\n🧠 ${l10n.intellectualCycle}:\n$intellectualDetailDesc\n";
+        detailedAnalysisSection +=
+            "\n🧠 ${l10n.intellectualCycle}:\n$intellectualDetailDesc\n";
       }
     }
 
     return """${l10n.biorhythmAnalysisFor(DateFormat(l10n.localeName == 'hu' ? 'yyyy. MMM d.' : 'MMM dd, yyyy', l10n.localeName).format(_selectedDate))}
 
-🏃 ${l10n.physical}: $physicalDesc (${(physical * 100).round()}%)
-❤️ ${l10n.emotional}: $emotionalDesc (${(emotional * 100).round()}%)
-🧠 ${l10n.intellectual}: $intellectualDesc (${(intellectual * 100).round()}%)$detailedAnalysisSection
+🏃 ${l10n.physical}: $physicalDesc (${_formatPercentageWithState(physical, l10n)})
+❤️ ${l10n.emotional}: $emotionalDesc (${_formatPercentageWithState(emotional, l10n)})
+🧠 ${l10n.intellectual}: $intellectualDesc (${_formatPercentageWithState(intellectual, l10n)})$detailedAnalysisSection
 ${l10n.chartDescription}""";
   }
 
@@ -198,11 +217,14 @@ ${l10n.chartDescription}""";
 
   // Helper function to find peak (high) and trough (low) days for a cycle
   // Get conditional detailed description based on critical points
-  String _getConditionalDetailedDescription(BuildContext context, String cycleType) {
+  String _getConditionalDetailedDescription(
+    BuildContext context,
+    String cycleType,
+  ) {
     final l10n = AppLocalizations.of(context)!;
-    
+
     if (_birthDate == null) return '';
-    
+
     // Get cycle length
     int cycle;
     if (cycleType == 'physical') {
@@ -212,46 +234,46 @@ ${l10n.chartDescription}""";
     } else {
       cycle = intellectualCycle;
     }
-    
+
     // Find critical points: peak, trough, and zero crossings
     Map<String, dynamic> peakTrough = _findPeakAndTroughDays(cycle);
     List<DateTime> zeroCrossings = _findZeroCrossings(cycle);
-    
+
     if (peakTrough.isEmpty) return '';
-    
+
     DateTime peak = peakTrough['peak'];
     DateTime trough = peakTrough['trough'];
-    
+
     // Check if current date is within one day of any critical point
     DateTime currentDate = _selectedDate;
-    
+
     // Check if within peak range (day before, day of, day after)
     if (_isWithinRange(currentDate, peak, 1)) {
       return _getMaxDescription(l10n, cycleType);
     }
-    
+
     // Check if within trough range (day before, day of, day after)
     if (_isWithinRange(currentDate, trough, 1)) {
       return _getMinDescription(l10n, cycleType);
     }
-    
+
     // Check if within zero crossing range (day before, day of, day after)
     for (DateTime zeroCrossing in zeroCrossings) {
       if (_isWithinRange(currentDate, zeroCrossing, 1)) {
         return _getMidDescription(l10n, cycleType);
       }
     }
-    
+
     // If not near any critical point, don't show detailed description
     return '';
   }
-  
+
   // Helper method to check if a date is within range of a target date
   bool _isWithinRange(DateTime date, DateTime target, int rangeDays) {
     Duration difference = date.difference(target).abs();
     return difference.inDays <= rangeDays;
   }
-  
+
   // Get max description for cycle type
   String _getMaxDescription(AppLocalizations l10n, String cycleType) {
     if (cycleType == 'physical') {
@@ -262,7 +284,7 @@ ${l10n.chartDescription}""";
       return l10n.descrIntellectualMax;
     }
   }
-  
+
   // Get min description for cycle type
   String _getMinDescription(AppLocalizations l10n, String cycleType) {
     if (cycleType == 'physical') {
@@ -273,7 +295,7 @@ ${l10n.chartDescription}""";
       return l10n.descrIntellectualMin;
     }
   }
-  
+
   // Get mid description for cycle type
   String _getMidDescription(AppLocalizations l10n, String cycleType) {
     if (cycleType == 'physical') {
@@ -284,63 +306,64 @@ ${l10n.chartDescription}""";
       return l10n.descrIntellectualMid;
     }
   }
-  
+
   // Find zero crossings in the biorhythm cycle
   List<DateTime> _findZeroCrossings(int cycle) {
     if (_birthDate == null) return [];
-    
+
     List<DateTime> crossings = [];
     DateTime startDate = _selectedDate.subtract(const Duration(days: 15));
-    
+
     double previousValue = 0;
-    
+
     // Check 30 days around the selected date
     for (int i = 0; i < 30; i++) {
       DateTime currentDate = startDate.add(Duration(days: i));
       int daysSinceBirth = currentDate.difference(_birthDate!).inDays;
       double currentValue = _calculateBiorhythm(cycle, daysSinceBirth);
-      
+
       // Check for zero crossing (sign change)
-      if (i > 0 && 
-          ((previousValue > 0 && currentValue < 0) || 
-           (previousValue < 0 && currentValue > 0) ||
-           (currentValue.abs() < 0.05))) { // Very close to zero
+      if (i > 0 &&
+          ((previousValue > 0 && currentValue < 0) ||
+              (previousValue < 0 && currentValue > 0) ||
+              (currentValue.abs() < 0.05))) {
+        // Very close to zero
         crossings.add(currentDate);
       }
-      
+
       previousValue = currentValue;
     }
-    
+
     return crossings;
   }
 
   Map<String, dynamic> _findPeakAndTroughDays(int cycle) {
     if (_birthDate == null) return {};
-    
+
     DateTime startDate = _selectedDate.subtract(const Duration(days: 15));
-    
+
     double maxValue = -2.0;
     double minValue = 2.0;
     DateTime? peakDate;
     DateTime? troughDate;
-    
+
     // Check 30 days around the selected date
     for (int i = 0; i < 30; i++) {
       DateTime currentDate = startDate.add(Duration(days: i));
       int daysSinceBirth = currentDate.difference(_birthDate!).inDays;
       double value = _calculateBiorhythm(cycle, daysSinceBirth);
-      
+
       if (value > maxValue) {
         maxValue = value;
         peakDate = currentDate;
       }
-      
+
       if (value < minValue) {
         minValue = value;
         troughDate = currentDate;
       }
     }
-    
+
     return {
       'peak': peakDate!,
       'trough': troughDate!,
@@ -388,7 +411,12 @@ ${l10n.chartDescription}""";
                     const SizedBox(height: 8),
                     Text(
                       _birthDate != null
-                          ? DateFormat(l10n.localeName == 'hu' ? 'yyyy. MMMM d.' : 'MMMM dd, yyyy', l10n.localeName).format(_birthDate!)
+                          ? DateFormat(
+                              l10n.localeName == 'hu'
+                                  ? 'yyyy. MMMM d.'
+                                  : 'MMMM dd, yyyy',
+                              l10n.localeName,
+                            ).format(_birthDate!)
                           : l10n.notSelected,
                       style: const TextStyle(fontSize: 16),
                     ),
@@ -419,7 +447,12 @@ ${l10n.chartDescription}""";
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      DateFormat(l10n.localeName == 'hu' ? 'yyyy. MMMM d.' : 'MMMM dd, yyyy', l10n.localeName).format(_selectedDate),
+                      DateFormat(
+                        l10n.localeName == 'hu'
+                            ? 'yyyy. MMMM d.'
+                            : 'MMMM dd, yyyy',
+                        l10n.localeName,
+                      ).format(_selectedDate),
                       style: const TextStyle(fontSize: 16),
                     ),
                     const SizedBox(height: 8),
@@ -457,8 +490,10 @@ ${l10n.chartDescription}""";
                                   show: true,
                                   drawVerticalLine: true,
                                   drawHorizontalLine: true,
-                                  horizontalInterval: 0.5, // Grid lines every 50%
-                                  verticalInterval: 5, // Grid lines every 5 days
+                                  horizontalInterval:
+                                      0.5, // Grid lines every 50%
+                                  verticalInterval:
+                                      5, // Grid lines every 5 days
                                   getDrawingHorizontalLine: (value) {
                                     return FlLine(
                                       color: Colors.grey.withOpacity(0.3),
@@ -479,7 +514,9 @@ ${l10n.chartDescription}""";
                                         LineBarSpot touchedSpot,
                                       ) {
                                         final percentage = (touchedSpot.y * 100)
-                                            .round().toString();
+                                            .round()
+                                            .toString();
+                                        final state = touchedSpot.y >= 0 ? l10n.active : l10n.passive;
                                         String label = '';
                                         Color color = Colors.black;
 
@@ -502,7 +539,7 @@ ${l10n.chartDescription}""";
                                         }
 
                                         return LineTooltipItem(
-                                          '$label: $percentage%',
+                                          '$label: $percentage% ($state)',
                                           TextStyle(
                                             color: color,
                                             fontWeight: FontWeight.bold,
@@ -524,7 +561,9 @@ ${l10n.chartDescription}""";
                                         if (value % 0.5 == 0) {
                                           return Text(
                                             '${(value * 100).toInt()}%',
-                                            style: const TextStyle(fontSize: 10),
+                                            style: const TextStyle(
+                                              fontSize: 10,
+                                            ),
                                           );
                                         }
                                         return const Text('');
@@ -535,13 +574,19 @@ ${l10n.chartDescription}""";
                                     sideTitles: SideTitles(
                                       showTitles: true,
                                       reservedSize: 30,
-                                      interval: 1, // Check every day but only show specific ones
+                                      interval:
+                                          1, // Check every day but only show specific ones
                                       getTitlesWidget: (value, meta) {
                                         // Always show the selected date (day 15) and regular 5-day intervals
-                                        bool isSelectedDate = value.toInt() == 15;
-                                        bool isRegularInterval = value % 5 == 0 && value >= 0 && value <= 29;
-                                        
-                                        if (isSelectedDate || isRegularInterval) {
+                                        bool isSelectedDate =
+                                            value.toInt() == 15;
+                                        bool isRegularInterval =
+                                            value % 5 == 0 &&
+                                            value >= 0 &&
+                                            value <= 29;
+
+                                        if (isSelectedDate ||
+                                            isRegularInterval) {
                                           DateTime date = _selectedDate
                                               .subtract(
                                                 const Duration(days: 15),
@@ -550,13 +595,23 @@ ${l10n.chartDescription}""";
                                                 Duration(days: value.toInt()),
                                               );
                                           // Use proper Hungarian date format
-                                          String dateFormat = l10n.localeName == 'hu' ? 'MMM d.' : 'd/MMM';
+                                          String dateFormat =
+                                              l10n.localeName == 'hu'
+                                              ? 'MMM d.'
+                                              : 'd/MMM';
                                           return Text(
-                                            DateFormat(dateFormat, l10n.localeName).format(date),
+                                            DateFormat(
+                                              dateFormat,
+                                              l10n.localeName,
+                                            ).format(date),
                                             style: TextStyle(
                                               fontSize: 10,
-                                              fontWeight: isSelectedDate ? FontWeight.bold : FontWeight.normal,
-                                              color: isSelectedDate ? Colors.black : Colors.grey.shade600,
+                                              fontWeight: isSelectedDate
+                                                  ? FontWeight.bold
+                                                  : FontWeight.normal,
+                                              color: isSelectedDate
+                                                  ? Colors.black
+                                                  : Colors.grey.shade600,
                                             ),
                                           );
                                         }

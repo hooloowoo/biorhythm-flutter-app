@@ -361,6 +361,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Intellectual Cycle'**
   String get intellectualCycle;
+
+  /// No description provided for @active.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get active;
+
+  /// No description provided for @passive.
+  ///
+  /// In en, this message translates to:
+  /// **'Passive'**
+  String get passive;
 }
 
 class _AppLocalizationsDelegate

@@ -155,4 +155,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get intellectualCycle => 'Intellectual Cycle';
+
+  @override
+  String get active => 'Active';
+
+  @override
+  String get passive => 'Passive';
 }

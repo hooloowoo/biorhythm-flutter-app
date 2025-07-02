@@ -50,5 +50,7 @@
   "detailedAnalysis": "Detailed Analysis",
   "physicalCycle": "Physical Cycle",
   "emotionalCycle": "Emotional Cycle",
-  "intellectualCycle": "Intellectual Cycle"
+  "intellectualCycle": "Intellectual Cycle",
+  "active": "Active",
+  "passive": "Passive"
 }

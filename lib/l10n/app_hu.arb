@@ -50,5 +50,7 @@
   "detailedAnalysis": "Részletes elemzés",
   "physicalCycle": "Fizikai ciklus",
   "emotionalCycle": "Érzelmi ciklus",
-  "intellectualCycle": "Szellemi ciklus"
+  "intellectualCycle": "Szellemi ciklus",
+  "active": "Aktív",
+  "passive": "Passzív"
 }

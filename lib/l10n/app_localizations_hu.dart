@@ -156,4 +156,10 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get intellectualCycle => 'Szellemi ciklus';
+
+  @override
+  String get active => 'Aktív';
+
+  @override
+  String get passive => 'Passzív';
 }
