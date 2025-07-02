@@ -37,7 +37,7 @@ flutter build apk --release
 ### Play Store Steps
 1. **Create app in Play Console**
    - App name: "Biorhythm Calculator"
-   - Package name: `com.biorhythm.calculator`
+   - Package name: `eu.highball.biorhythm`
 
 2. **Upload APK/Bundle**
    - Upload the built file to Internal Testing first
@@ -65,7 +65,7 @@ flutter build apk --release
    - Download from Mac App Store
 
 3. **Bundle Identifier**
-   - Use: `com.biorhythm.calculator`
+   - Use: `eu.highball.biorhythm`
 
 ### iOS Build Process
 ```bash
@@ -79,7 +79,7 @@ open ios/Runner.xcworkspace
 ### Xcode Steps
 1. **Configure Signing**
    - Select your Apple Developer Team
-   - Set Bundle Identifier: `com.biorhythm.calculator`
+   - Set Bundle Identifier: `eu.highball.biorhythm`
 
 2. **Build for Archive**
    - Product → Archive
@@ -131,7 +131,7 @@ Take screenshots on various device sizes:
 
 ### ✅ Completed
 - [x] App name and description
-- [x] Package/Bundle identifier updated
+- [x] Package/Bundle identifier updated to eu.highball.biorhythm
 - [x] Version number set (1.0.0+1)
 - [x] Android APK built successfully
 - [x] Localization support (English, Hungarian)
