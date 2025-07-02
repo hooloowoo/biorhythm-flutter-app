@@ -135,3 +135,46 @@ Created with ❤️ using Flutter
 ---
 
 *Discover your natural rhythms and optimize your daily life with biorhythm insights!*
+
+## Installation
+
+### Web Version
+The app is built for web and can be found in the `build/web` directory after running:
+```bash
+flutter build web
+```
+
+### Mobile Installation (iOS)
+
+#### Quick Start
+1. **Connect your iPhone** via USB or ensure it's on the same WiFi network
+2. **Run the setup script:**
+   ```bash
+   ./setup_ios.sh
+   ```
+3. **Install on device:**
+   ```bash
+   flutter run --release -d "Kornel's iPhone"
+   # or
+   flutter run --release -d "Renata iPhone-ja"
+   ```
+
+#### Detailed Instructions
+For complete step-by-step instructions, see [iOS_INSTALLATION_GUIDE.md](iOS_INSTALLATION_GUIDE.md)
+
+**Prerequisites:**
+- Xcode installed (available from Mac App Store)
+- Apple ID for device signing
+- iPhone connected and trusted
+
+**Available Devices:**
+- Kornel's iPhone (iOS 18.5)
+- Renata iPhone-ja (iOS 18.5)
+- macOS desktop version
+- Web version (Chrome)
+
+### Android Installation
+```bash
+flutter build apk --release
+# Install the APK on your Android device
+```
