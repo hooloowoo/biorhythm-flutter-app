@@ -76,9 +76,9 @@ class _BiorhythmHomePageState extends State<BiorhythmHomePage> {
     if (_birthDate == null) return [];
 
     List<FlSpot> spots = [];
-    DateTime startDate = _selectedDate.subtract(const Duration(days: 15));
+    DateTime startDate = _selectedDate.subtract(const Duration(days: 3));
 
-    for (int i = 0; i < 31; i++) {
+    for (int i = 0; i < 7; i++) {
       DateTime currentDate = startDate.add(Duration(days: i));
       int daysSinceBirth = currentDate.difference(_birthDate!).inDays;
       double value = _calculateBiorhythm(cycle, daysSinceBirth);
@@ -149,9 +149,9 @@ class _BiorhythmHomePageState extends State<BiorhythmHomePage> {
 
     return """${l10n.biorhythmAnalysisFor(DateFormat('MMM dd, yyyy').format(_selectedDate))}
 
-🏃 ${l10n.physical}: $physicalDesc (${(physical * 100).toStringAsFixed(2)}%)
-❤️ ${l10n.emotional}: $emotionalDesc (${(emotional * 100).toStringAsFixed(2)}%)
-🧠 ${l10n.intellectual}: $intellectualDesc (${(intellectual * 100).toStringAsFixed(2)}%)$detailedAnalysisSection
+🏃 ${l10n.physical}: $physicalDesc (${(physical * 100).round()}%)
+❤️ ${l10n.emotional}: $emotionalDesc (${(emotional * 100).round()}%)
+🧠 ${l10n.intellectual}: $intellectualDesc (${(intellectual * 100).round()}%)$detailedAnalysisSection
 ${l10n.chartDescription}""";
   }
 
@@ -284,12 +284,12 @@ ${l10n.chartDescription}""";
     if (_birthDate == null) return [];
     
     List<DateTime> crossings = [];
-    DateTime startDate = _selectedDate.subtract(const Duration(days: 15));
+    DateTime startDate = _selectedDate.subtract(const Duration(days: 3));
     
     double previousValue = 0;
     
-    // Check 31 days around the selected date
-    for (int i = 0; i < 31; i++) {
+    // Check 7 days around the selected date
+    for (int i = 0; i < 7; i++) {
       DateTime currentDate = startDate.add(Duration(days: i));
       int daysSinceBirth = currentDate.difference(_birthDate!).inDays;
       double currentValue = _calculateBiorhythm(cycle, daysSinceBirth);
@@ -311,15 +311,15 @@ ${l10n.chartDescription}""";
   Map<String, dynamic> _findPeakAndTroughDays(int cycle) {
     if (_birthDate == null) return {};
     
-    DateTime startDate = _selectedDate.subtract(const Duration(days: 15));
+    DateTime startDate = _selectedDate.subtract(const Duration(days: 3));
     
     double maxValue = -2.0;
     double minValue = 2.0;
     DateTime? peakDate;
     DateTime? troughDate;
     
-    // Check 31 days around the selected date
-    for (int i = 0; i < 31; i++) {
+    // Check 7 days around the selected date
+    for (int i = 0; i < 7; i++) {
       DateTime currentDate = startDate.add(Duration(days: i));
       int daysSinceBirth = currentDate.difference(_birthDate!).inDays;
       double value = _calculateBiorhythm(cycle, daysSinceBirth);
@@ -452,7 +452,7 @@ ${l10n.chartDescription}""";
                                   drawVerticalLine: true,
                                   drawHorizontalLine: true,
                                   horizontalInterval: 0.5, // Grid lines every 50%
-                                  verticalInterval: 7, // Grid lines every 7 days
+                                  verticalInterval: 1, // Grid lines every day
                                   getDrawingHorizontalLine: (value) {
                                     return FlLine(
                                       color: Colors.grey.withOpacity(0.3),
@@ -473,7 +473,7 @@ ${l10n.chartDescription}""";
                                         LineBarSpot touchedSpot,
                                       ) {
                                         final percentage = (touchedSpot.y * 100)
-                                            .toStringAsFixed(2);
+                                            .round().toString();
                                         String label = '';
                                         Color color = Colors.black;
 
@@ -530,25 +530,22 @@ ${l10n.chartDescription}""";
                                       showTitles: true,
                                       reservedSize: 30,
                                       getTitlesWidget: (value, meta) {
-                                        // Show dates every 7 days (weekly) for cleaner look
-                                        if (value.toInt() % 7 == 0 || value.toInt() == 15) {
-                                          DateTime date = _selectedDate
-                                              .subtract(
-                                                const Duration(days: 15),
-                                              )
-                                              .add(
-                                                Duration(days: value.toInt()),
-                                              );
-                                          // Show day/month abbreviation for better readability
-                                          String dateFormat = l10n.localeName == 'hu' ? 'd/MMM' : 'd/MMM';
-                                          return Text(
-                                            DateFormat(dateFormat, l10n.localeName).format(date),
-                                            style: const TextStyle(
-                                              fontSize: 10,
-                                            ),
-                                          );
-                                        }
-                                        return const Text('');
+                                        // Show all days in the week
+                                        DateTime date = _selectedDate
+                                            .subtract(
+                                              const Duration(days: 3),
+                                            )
+                                            .add(
+                                              Duration(days: value.toInt()),
+                                            );
+                                        // Show day/month abbreviation for better readability
+                                        String dateFormat = l10n.localeName == 'hu' ? 'd/MMM' : 'd/MMM';
+                                        return Text(
+                                          DateFormat(dateFormat, l10n.localeName).format(date),
+                                          style: const TextStyle(
+                                            fontSize: 10,
+                                          ),
+                                        );
                                       },
                                     ),
                                   ),
@@ -561,7 +558,7 @@ ${l10n.chartDescription}""";
                                 ),
                                 borderData: FlBorderData(show: true),
                                 minX: 0,
-                                maxX: 30,
+                                maxX: 6,
                                 minY: -1.2,
                                 maxY: 1.2,
                                 lineBarsData: [
@@ -601,8 +598,8 @@ ${l10n.chartDescription}""";
                                   // Today marker
                                   LineChartBarData(
                                     spots: [
-                                      const FlSpot(15, -1.2),
-                                      const FlSpot(15, 1.2),
+                                      const FlSpot(3, -1.2),
+                                      const FlSpot(3, 1.2),
                                     ],
                                     isCurved: false,
                                     color: Colors.black,
