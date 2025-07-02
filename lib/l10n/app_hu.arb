@@ -1,0 +1,53 @@
+{
+  "@@locale": "hu",
+  "appTitle": "Bioritmikus Kalkulátor",
+  "birthDate": "Születési Dátum",
+  "analysisDate": "Elemzési Dátum",
+  "selectBirthDate": "Születési Dátum Kiválasztása",
+  "selectDate": "Dátum Kiválasztása",
+  "notSelected": "Nincs kiválasztva",
+  "selectBirthDateHelp": "Kérjük, válassza ki a születési dátumát",
+  "selectAnalysisDateHelp": "Kérjük, válassza ki az elemzendő dátumot",
+  "biorhythmChart": "Bioritmikus Grafikon",
+  "biorhythmAnalysis": "Bioritmikus Elemzés",
+  "pleaseSelectBirthDate": "Kérjük, válassza ki a születési dátumát a bioritmikus grafikon megtekintéséhez.",
+  "physical": "Fizikai",
+  "emotional": "Érzelmi",
+  "intellectual": "Szellemi",
+  "high": "Magas",
+  "medium": "Közepes",
+  "low": "Alacsony",
+  "analysisDescription": "Elemzés Leírása",
+  "biorhythmAnalysisFor": "Bioritmikus Elemzés {date} dátumra",
+  "@biorhythmAnalysisFor": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "physicalDescription": "A fizikai ciklus befolyásolja az energiáját, erejét és általános fizikai jóllétét.",
+  "emotionalDescription": "Az érzelmi ciklus befolyásolja a hangulatát, kreativitását és érzelmi stabilitását.",
+  "intellectualDescription": "A szellemi ciklus hatással van az analitikus gondolkodására, döntéshozatalára és mentális tisztaságára.",
+  "chartDescription": "A grafikon az időbeli bioritmikus ciklusokat mutatja. Érintse meg a vonalakat a pontos értékek megtekintéséhez.",
+  "birthdate": "Szül. dátum",
+  "name": "Név",
+  "settings": "Beállítások",
+  "actualDate": "Aktuális dátum",
+  "profiles": "Profilok",
+  "addItem": "Új profil",
+  "mainTitle": "Bioritmus",
+  "descrPhysicalMax": "Ebben az időszakban fokozott a fizikai szintű aktivitásod. A tested energikus, életteli, képes vagy kitartóan végezni fizikai tevékenységeket, fokozódhat a szexuális aktivitásod. A legjobb időszak a fizikai munkához, a sportoláshoz, a szexhez, az orvosi beavatkozásokhoz.",
+  "descrPhysicalMid": "Ez az időszak kritikus a fizikai, testi épséged szempontjából. Légy óvatos a fizikai tevékenységeid során, hogy meg ne sérülj! Ügyelj az eszközhasználatra, a járművezetésre és gépkezelésre. Ha lehet, minimalizáld a veszélyforrásokat. Az orvosi beavatkozások, utazások kerülendők.",
+  "descrPhysicalMin": "Ebben az időszakban csökken a fizikai és a szexuális aktivitásod. Fáradtnak érezheted magad, romlik a mozgáskoordinációd, akár meg is betegedhetsz. Ha lehet, csökkentsd a fizikai munkát, és kerüld az alkoholfogyasztást.",
+  "descrEmotionalMax": "Ebben az időszakban elégedettnek érzed magad, motivált és lelkes lehetsz, alkotni és szeretni vágysz. Ugyanakkor fokozott az érzékenységed. Emiatt a kapcsolataidban könnyen reagálhatsz szélsőségesen, ha békétlenséget és ridegséget tapasztalsz.",
+  "descrEmotionalMid": "Ezekben a napokban nehezebben kontrollálod az érzelmeidet. Hajlamos lehetsz érzelmi kitörésekre.",
+  "descrEmotionalMin": "Ebben az időszakban csökken az életkedved, ingerlékenyebb lehetsz, és hajlamosabb az apátiára. A nők és a kreatív emberek erre általában érzékenyebbek. Ez a pár nap az emberi kapcsolatok, különösen a szerelem szempontjából nem túl kedvező.",
+  "descrIntellectualMax": "Ebben az időszakban fokozódik a kreativitásod és a mentális aktivitásod. Bonyolult ügyeket is könnyedén megoldasz. Most érdemes üzletet, szerződést kötni, és meghozni a fontos döntéseidet.",
+  "descrIntellectualMid": "Ezekben a napokban szórakozott, dekoncentrált lehetsz, és meggondolatlan döntéseket hozhatsz. Irreális és haszontalan, vagy megvalósíthatatlan ötleteid támadhatnak. Intellektuális téren ne várj magadtól túl sokat.",
+  "descrIntellectualMin": "Ebben az időszakban csökkenhet a mentális kapacitásod, nehezebben megy a gondolkodás, rosszabb lehet a memóriád. Ha lehet, he most köss üzletet, ne írj alá szerződéseket, és ne most kezdj valami új ötlet megvalósításába. A legjobb, ha gondolkozást nem igénylő dolgokkal foglalkozol.",
+  "detailedAnalysis": "Részletes Elemzés",
+  "physicalCycle": "Fizikai Ciklus",
+  "emotionalCycle": "Érzelmi Ciklus",
+  "intellectualCycle": "Szellemi Ciklus"
+}

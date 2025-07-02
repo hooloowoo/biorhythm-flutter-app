@@ -1,0 +1,53 @@
+{
+  "@@locale": "en",
+  "appTitle": "Biorhythm Calculator",
+  "birthDate": "Birth Date",
+  "analysisDate": "Analysis Date", 
+  "selectBirthDate": "Select Birth Date",
+  "selectDate": "Select Date",
+  "notSelected": "Not selected",
+  "selectBirthDateHelp": "Please select your birth date",
+  "selectAnalysisDateHelp": "Please select the date to analyze",
+  "biorhythmChart": "Biorhythm Chart",
+  "biorhythmAnalysis": "Biorhythm Analysis",
+  "pleaseSelectBirthDate": "Please select your birth date to see the biorhythm chart.",
+  "physical": "Physical",
+  "emotional": "Emotional", 
+  "intellectual": "Intellectual",
+  "high": "High",
+  "medium": "Medium",
+  "low": "Low",
+  "analysisDescription": "Analysis Description",
+  "biorhythmAnalysisFor": "Biorhythm Analysis for {date}",
+  "@biorhythmAnalysisFor": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "physicalDescription": "The physical cycle affects your energy, strength, and overall physical well-being.",
+  "emotionalDescription": "The emotional cycle influences your mood, creativity, and emotional stability.",
+  "intellectualDescription": "The intellectual cycle impacts your analytical thinking, decision-making, and mental clarity.",
+  "chartDescription": "The chart shows your biorhythm cycles over time. Touch or tap the lines to see exact values.",
+  "birthdate": "Birthdate",
+  "name": "Name",
+  "settings": "Settings",
+  "actualDate": "Actual date",
+  "profiles": "Profiles",
+  "addItem": "New profile",
+  "mainTitle": "Biorhythm",
+  "descrPhysicalMax": "During this period, your physical activity level increases. Your body feels energetic and vital, and you can perform physical activities with stamina. Additionally, your sexual activity may increase during this time. It is the best time for physical work, sports, sex, and medical interventions.",
+  "descrPhysicalMid": "During this period, it is important to prioritize your physical health. Therefore, it is essential to avoid injuries while engaging in physical activities. Take special care while using tools, driving, and operating machinery to prevent accidents. If possible, try to minimize any potential sources of danger. It is also advisable to avoid medical interventions or travel unless necessary.",
+  "descrPhysicalMin": "During this period, you may experience decreased physical and sexual activity, tiredness, deteriorating coordination, and sickness. It is recommended to reduce physical work and avoid alcohol consumption if possible.",
+  "descrEmotionalMax": "During this period, you may experience contentment, motivation, enthusiasm, and eagerness to create and love. However, you may also have heightened sensitivity, which can cause you to react quickly to extremes in your relationships. If you experience a lack of peace and coldness in your relationships, it may trigger an adverse reaction.",
+  "descrEmotionalMid": "During this period, it may be difficult to manage emotions, and occasional outbursts may occur.",
+  "descrEmotionalMin": "During this period, individuals may experience decreased energy levels, increased irritability, and apathy. Women and creative types may be particularly susceptible. This period may not be optimal for relationships, particularly romantic ones.",
+  "descrIntellectualMax": "During this period, your creativity and mental activity will increase. You can quickly solve complicated issues, and it is an excellent time to make important decisions, deals, and contracts.",
+  "descrIntellectualMid": "During this period, you may find yourself unable to concentrate, making impulsive decisions and having unrealistic, useless, unrealistic ideas. Don't expect too much from yourself intellectually.",
+  "descrIntellectualMin": "During this period, you may experience a decrease in your mental capacity, making it difficult to think and remember things. It's advisable to avoid making any important decisions, such as signing a contract, making a deal, or starting a new project. Instead, engage in activities that don't require too much thinking.",
+  "detailedAnalysis": "Detailed Analysis",
+  "physicalCycle": "Physical Cycle",
+  "emotionalCycle": "Emotional Cycle",
+  "intellectualCycle": "Intellectual Cycle"
+}
