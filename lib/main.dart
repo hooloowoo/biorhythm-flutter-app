@@ -76,9 +76,9 @@ class _BiorhythmHomePageState extends State<BiorhythmHomePage> {
     if (_birthDate == null) return [];
 
     List<FlSpot> spots = [];
-    DateTime startDate = _selectedDate.subtract(const Duration(days: 7));
+    DateTime startDate = _selectedDate.subtract(const Duration(days: 15));
 
-    for (int i = 0; i < 14; i++) {
+    for (int i = 0; i < 30; i++) {
       DateTime currentDate = startDate.add(Duration(days: i));
       int daysSinceBirth = currentDate.difference(_birthDate!).inDays;
       double value = _calculateBiorhythm(cycle, daysSinceBirth);
@@ -284,12 +284,12 @@ ${l10n.chartDescription}""";
     if (_birthDate == null) return [];
     
     List<DateTime> crossings = [];
-    DateTime startDate = _selectedDate.subtract(const Duration(days: 7));
+    DateTime startDate = _selectedDate.subtract(const Duration(days: 15));
     
     double previousValue = 0;
     
-    // Check 14 days around the selected date
-    for (int i = 0; i < 14; i++) {
+    // Check 30 days around the selected date
+    for (int i = 0; i < 30; i++) {
       DateTime currentDate = startDate.add(Duration(days: i));
       int daysSinceBirth = currentDate.difference(_birthDate!).inDays;
       double currentValue = _calculateBiorhythm(cycle, daysSinceBirth);
@@ -311,15 +311,15 @@ ${l10n.chartDescription}""";
   Map<String, dynamic> _findPeakAndTroughDays(int cycle) {
     if (_birthDate == null) return {};
     
-    DateTime startDate = _selectedDate.subtract(const Duration(days: 7));
+    DateTime startDate = _selectedDate.subtract(const Duration(days: 15));
     
     double maxValue = -2.0;
     double minValue = 2.0;
     DateTime? peakDate;
     DateTime? troughDate;
     
-    // Check 14 days around the selected date
-    for (int i = 0; i < 14; i++) {
+    // Check 30 days around the selected date
+    for (int i = 0; i < 30; i++) {
       DateTime currentDate = startDate.add(Duration(days: i));
       int daysSinceBirth = currentDate.difference(_birthDate!).inDays;
       double value = _calculateBiorhythm(cycle, daysSinceBirth);
@@ -452,7 +452,7 @@ ${l10n.chartDescription}""";
                                   drawVerticalLine: true,
                                   drawHorizontalLine: true,
                                   horizontalInterval: 0.5, // Grid lines every 50%
-                                  verticalInterval: 2, // Grid lines every 2 days
+                                  verticalInterval: 5, // Grid lines every 5 days
                                   getDrawingHorizontalLine: (value) {
                                     return FlLine(
                                       color: Colors.grey.withOpacity(0.3),
@@ -529,12 +529,13 @@ ${l10n.chartDescription}""";
                                     sideTitles: SideTitles(
                                       showTitles: true,
                                       reservedSize: 30,
+                                      interval: 5, // Show labels every 5 days to prevent duplicates
                                       getTitlesWidget: (value, meta) {
-                                        // Show every other day for better readability
-                                        if (value.toInt() % 2 == 0) {
+                                        // Only show labels at exact intervals to prevent duplicates
+                                        if (value % 5 == 0 && value >= 0 && value <= 29) {
                                           DateTime date = _selectedDate
                                               .subtract(
-                                                const Duration(days: 7),
+                                                const Duration(days: 15),
                                               )
                                               .add(
                                                 Duration(days: value.toInt()),
@@ -561,7 +562,7 @@ ${l10n.chartDescription}""";
                                 ),
                                 borderData: FlBorderData(show: true),
                                 minX: 0,
-                                maxX: 13,
+                                maxX: 29,
                                 minY: -1.2,
                                 maxY: 1.2,
                                 lineBarsData: [
@@ -601,8 +602,8 @@ ${l10n.chartDescription}""";
                                   // Today marker
                                   LineChartBarData(
                                     spots: [
-                                      const FlSpot(7, -1.2),
-                                      const FlSpot(7, 1.2),
+                                      const FlSpot(15, -1.2),
+                                      const FlSpot(15, 1.2),
                                     ],
                                     isCurved: false,
                                     color: Colors.black,
