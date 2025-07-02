@@ -138,7 +138,7 @@ class _BiorhythmHomePageState extends State<BiorhythmHomePage> {
                         intellectualDetailDesc.isNotEmpty;
     
     if (hasAnyDetails) {
-      detailedAnalysisSection = "\n📋 ${l10n.detailedAnalysis}:\n";
+      detailedAnalysisSection = "\n\n📋 ${l10n.detailedAnalysis}:\n";
       
       if (physicalDetailDesc.isNotEmpty) {
         detailedAnalysisSection += "\n🏃 ${l10n.physicalCycle}:\n$physicalDetailDesc\n";
