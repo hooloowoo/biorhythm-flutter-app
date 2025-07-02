@@ -516,7 +516,6 @@ ${l10n.chartDescription}""";
                                         final percentage = (touchedSpot.y * 100)
                                             .round()
                                             .toString();
-                                        final state = touchedSpot.y >= 0 ? l10n.active : l10n.passive;
                                         String label = '';
                                         Color color = Colors.black;
 
@@ -539,7 +538,7 @@ ${l10n.chartDescription}""";
                                         }
 
                                         return LineTooltipItem(
-                                          '$label: $percentage% ($state)',
+                                          '$label: $percentage%',
                                           TextStyle(
                                             color: color,
                                             fontWeight: FontWeight.bold,
