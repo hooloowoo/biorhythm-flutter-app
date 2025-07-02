@@ -200,6 +200,12 @@ abstract class AppLocalizations {
   /// **'Low'**
   String get low;
 
+  /// No description provided for @critical.
+  ///
+  /// In en, this message translates to:
+  /// **'Critical'**
+  String get critical;
+
   /// No description provided for @analysisDescription.
   ///
   /// In en, this message translates to:

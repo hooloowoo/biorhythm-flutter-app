@@ -1,15 +1,15 @@
 {
   "@@locale": "hu",
-  "appTitle": "Bioritmus Kalkulátor",
-  "birthDate": "Születési Dátum",
-  "analysisDate": "Elemzési Dátum",
-  "selectBirthDate": "Születési Dátum Kiválasztása",
-  "selectDate": "Dátum Kiválasztása",
+  "appTitle": "Bioritmus kalkulátor",
+  "birthDate": "Születési dátum",
+  "analysisDate": "Elemzési dátum",
+  "selectBirthDate": "Születési dátum kiválasztása",
+  "selectDate": "Dátum kiválasztása",
   "notSelected": "Nincs kiválasztva",
   "selectBirthDateHelp": "Kérjük, válassza ki a születési dátumát",
   "selectAnalysisDateHelp": "Kérjük, válassza ki az elemzendő dátumot",
-  "biorhythmChart": "Bioritmus Grafikon",
-  "biorhythmAnalysis": "Bioritmus Elemzés",
+  "biorhythmChart": "Bioritmus grafikon",
+  "biorhythmAnalysis": "Bioritmus elemzés",
   "pleaseSelectBirthDate": "Kérjük, válassza ki a születési dátumát a bioritmus grafikon megtekintéséhez.",
   "physical": "Fizikai",
   "emotional": "Érzelmi",
@@ -17,8 +17,9 @@
   "high": "Magas",
   "medium": "Közepes",
   "low": "Alacsony",
-  "analysisDescription": "Elemzés Leírása",
-  "biorhythmAnalysisFor": "Bioritmus Elemzés {date} dátumra",
+  "critical": "Kritikus",
+  "analysisDescription": "Elemzés leírása",
+  "biorhythmAnalysisFor": "Bioritmus elemzés {date} dátumra",
   "@biorhythmAnalysisFor": {
     "placeholders": {
       "date": {
@@ -46,8 +47,8 @@
   "descrIntellectualMax": "Ebben az időszakban fokozódik a kreativitásod és a mentális aktivitásod. Bonyolult ügyeket is könnyedén megoldasz. Most érdemes üzletet, szerződést kötni, és meghozni a fontos döntéseidet.",
   "descrIntellectualMid": "Ezekben a napokban szórakozott, dekoncentrált lehetsz, és meggondolatlan döntéseket hozhatsz. Irreális és haszontalan, vagy megvalósíthatatlan ötleteid támadhatnak. Intellektuális téren ne várj magadtól túl sokat.",
   "descrIntellectualMin": "Ebben az időszakban csökkenhet a mentális kapacitásod, nehezebben megy a gondolkodás, rosszabb lehet a memóriád. Ha lehet, he most köss üzletet, ne írj alá szerződéseket, és ne most kezdj valami új ötlet megvalósításába. A legjobb, ha gondolkozást nem igénylő dolgokkal foglalkozol.",
-  "detailedAnalysis": "Részletes Elemzés",
-  "physicalCycle": "Fizikai Ciklus",
-  "emotionalCycle": "Érzelmi Ciklus",
-  "intellectualCycle": "Szellemi Ciklus"
+  "detailedAnalysis": "Részletes elemzés",
+  "physicalCycle": "Fizikai ciklus",
+  "emotionalCycle": "Érzelmi ciklus",
+  "intellectualCycle": "Szellemi ciklus"
 }

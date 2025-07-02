@@ -106,19 +106,25 @@ class _BiorhythmHomePageState extends State<BiorhythmHomePage> {
     // Get simple descriptions
     String physicalDesc = physical > 0.5
         ? l10n.high
-        : physical > -0.5
-        ? l10n.medium
-        : l10n.low;
+        : physical < -0.5
+        ? l10n.low
+        : physical.abs() < 0.2
+        ? l10n.critical
+        : l10n.medium;
     String emotionalDesc = emotional > 0.5
         ? l10n.high
-        : emotional > -0.5
-        ? l10n.medium
-        : l10n.low;
+        : emotional < -0.5
+        ? l10n.low
+        : emotional.abs() < 0.2
+        ? l10n.critical
+        : l10n.medium;
     String intellectualDesc = intellectual > 0.5
         ? l10n.high
-        : intellectual > -0.5
-        ? l10n.medium
-        : l10n.low;
+        : intellectual < -0.5
+        ? l10n.low
+        : intellectual.abs() < 0.2
+        ? l10n.critical
+        : l10n.medium;
 
     // Get conditional detailed descriptions based on critical points
     String physicalDetailDesc = _getConditionalDetailedDescription(context, 'physical');
@@ -529,10 +535,13 @@ ${l10n.chartDescription}""";
                                     sideTitles: SideTitles(
                                       showTitles: true,
                                       reservedSize: 30,
-                                      interval: 5, // Show labels every 5 days to prevent duplicates
+                                      interval: 1, // Check every day but only show specific ones
                                       getTitlesWidget: (value, meta) {
-                                        // Only show labels at exact intervals to prevent duplicates
-                                        if (value % 5 == 0 && value >= 0 && value <= 29) {
+                                        // Always show the selected date (day 15) and regular 5-day intervals
+                                        bool isSelectedDate = value.toInt() == 15;
+                                        bool isRegularInterval = value % 5 == 0 && value >= 0 && value <= 29;
+                                        
+                                        if (isSelectedDate || isRegularInterval) {
                                           DateTime date = _selectedDate
                                               .subtract(
                                                 const Duration(days: 15),
@@ -544,8 +553,10 @@ ${l10n.chartDescription}""";
                                           String dateFormat = l10n.localeName == 'hu' ? 'MMM d.' : 'd/MMM';
                                           return Text(
                                             DateFormat(dateFormat, l10n.localeName).format(date),
-                                            style: const TextStyle(
+                                            style: TextStyle(
                                               fontSize: 10,
+                                              fontWeight: isSelectedDate ? FontWeight.bold : FontWeight.normal,
+                                              color: isSelectedDate ? Colors.black : Colors.grey.shade600,
                                             ),
                                           );
                                         }

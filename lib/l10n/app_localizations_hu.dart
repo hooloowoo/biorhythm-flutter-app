@@ -9,19 +9,19 @@ class AppLocalizationsHu extends AppLocalizations {
   AppLocalizationsHu([String locale = 'hu']) : super(locale);
 
   @override
-  String get appTitle => 'Bioritmus Kalkulátor';
+  String get appTitle => 'Bioritmus kalkulátor';
 
   @override
-  String get birthDate => 'Születési Dátum';
+  String get birthDate => 'Születési dátum';
 
   @override
-  String get analysisDate => 'Elemzési Dátum';
+  String get analysisDate => 'Elemzési dátum';
 
   @override
-  String get selectBirthDate => 'Születési Dátum Kiválasztása';
+  String get selectBirthDate => 'Születési dátum kiválasztása';
 
   @override
-  String get selectDate => 'Dátum Kiválasztása';
+  String get selectDate => 'Dátum kiválasztása';
 
   @override
   String get notSelected => 'Nincs kiválasztva';
@@ -34,10 +34,10 @@ class AppLocalizationsHu extends AppLocalizations {
       'Kérjük, válassza ki az elemzendő dátumot';
 
   @override
-  String get biorhythmChart => 'Bioritmus Grafikon';
+  String get biorhythmChart => 'Bioritmus grafikon';
 
   @override
-  String get biorhythmAnalysis => 'Bioritmus Elemzés';
+  String get biorhythmAnalysis => 'Bioritmus elemzés';
 
   @override
   String get pleaseSelectBirthDate =>
@@ -62,11 +62,14 @@ class AppLocalizationsHu extends AppLocalizations {
   String get low => 'Alacsony';
 
   @override
-  String get analysisDescription => 'Elemzés Leírása';
+  String get critical => 'Kritikus';
+
+  @override
+  String get analysisDescription => 'Elemzés leírása';
 
   @override
   String biorhythmAnalysisFor(String date) {
-    return 'Bioritmus Elemzés $date dátumra';
+    return 'Bioritmus elemzés $date dátumra';
   }
 
   @override
@@ -143,14 +146,14 @@ class AppLocalizationsHu extends AppLocalizations {
       'Ebben az időszakban csökkenhet a mentális kapacitásod, nehezebben megy a gondolkodás, rosszabb lehet a memóriád. Ha lehet, he most köss üzletet, ne írj alá szerződéseket, és ne most kezdj valami új ötlet megvalósításába. A legjobb, ha gondolkozást nem igénylő dolgokkal foglalkozol.';
 
   @override
-  String get detailedAnalysis => 'Részletes Elemzés';
+  String get detailedAnalysis => 'Részletes elemzés';
 
   @override
-  String get physicalCycle => 'Fizikai Ciklus';
+  String get physicalCycle => 'Fizikai ciklus';
 
   @override
-  String get emotionalCycle => 'Érzelmi Ciklus';
+  String get emotionalCycle => 'Érzelmi ciklus';
 
   @override
-  String get intellectualCycle => 'Szellemi Ciklus';
+  String get intellectualCycle => 'Szellemi ciklus';
 }

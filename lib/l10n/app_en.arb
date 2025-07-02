@@ -17,6 +17,7 @@
   "high": "High",
   "medium": "Medium",
   "low": "Low",
+  "critical": "Critical",
   "analysisDescription": "Analysis Description",
   "biorhythmAnalysisFor": "Biorhythm Analysis for {date}",
   "@biorhythmAnalysisFor": {

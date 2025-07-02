@@ -61,6 +61,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get low => 'Low';
 
   @override
+  String get critical => 'Critical';
+
+  @override
   String get analysisDescription => 'Analysis Description';
 
   @override
