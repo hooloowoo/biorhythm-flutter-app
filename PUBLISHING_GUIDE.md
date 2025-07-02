@@ -1,8 +1,27 @@
 # 📱 Publishing Guide for Biorhythm Calculator
 
 ## ✅ Build Status
-- ✅ Android APK built successfully: `build/app/outputs/flutter-apk/app-release.apk` (21.6MB)
-- ⏳ iOS build (requires Xcode and Apple Developer Account)
+- ✅ Android APK built successfully: `build/app/outputs/flutter-apk### ✅ Completed
+- [x] App name and description
+- [x] Package/Bundle identifier updated to eu.highball.biorhythm
+- [x] Version number set (1.0.0+1)
+- [x] Android APK built successfully
+- [x] **iOS App Store icon issue RESOLVED**
+- [x] **iOS app built successfully with custom icon**
+- [x] Custom biorhythm app icon created (1024x1024px PNG)
+- [x] All iOS icon sizes generated automatically
+- [x] Localization support (English, Hungarian)
+- [x] Metadata files created
+
+### ⏳ Remaining Tasks
+- [ ] Take app screenshots
+- [ ] Create signing key for Android
+- [ ] Set up iOS certificates and provisioning
+- [ ] Archive iOS app in Xcode for App Store submission
+- [ ] Create store accounts (Google Play, App Store)
+- [ ] Upload apps to stores` (21.6MB)
+- ✅ iOS build completed successfully with custom app icon: `build/ios/iphoneos/Runner.app` (27.0MB)
+- ✅ **iOS App Store icon issue RESOLVED** - Custom biorhythm icon created and integrated
 
 ## 🤖 Google Play Store Publishing
 
@@ -138,13 +157,20 @@ Take screenshots on various device sizes:
 - [x] Metadata files created
 
 ### ⏳ Remaining Tasks
-- [ ] Create app icons (1024x1024 and 512x512)
+- [🔥 URGENT] Create app icons (1024x1024 and 512x512) - **REQUIRED FOR iOS**
 - [ ] Take app screenshots
 - [ ] Create signing key for Android
 - [ ] Set up iOS certificates and provisioning
 - [ ] Build iOS app in Xcode
 - [ ] Create store accounts (Google Play, App Store)
 - [ ] Upload apps to stores
+
+## 🚨 **iOS ICON ISSUE FIX**
+If your iOS submission failed due to invalid app icon:
+1. **Read**: `IOS_ICON_FIX.md` for detailed solution
+2. **Run**: `./fix_ios_icon.sh` for automated fix
+3. **Create**: 1024x1024px PNG app icon in `assets/icon/app_icon.png`
+4. **Rebuild**: iOS app after adding icon
 
 ## 💰 Publishing Costs
 - **Google Play**: $25 one-time registration fee
