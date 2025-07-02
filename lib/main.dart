@@ -447,7 +447,25 @@ ${l10n.chartDescription}""";
                       child: _birthDate != null
                           ? LineChart(
                               LineChartData(
-                                gridData: const FlGridData(show: true),
+                                gridData: FlGridData(
+                                  show: true,
+                                  drawVerticalLine: true,
+                                  drawHorizontalLine: true,
+                                  horizontalInterval: 0.5, // Grid lines every 50%
+                                  verticalInterval: 7, // Grid lines every 7 days
+                                  getDrawingHorizontalLine: (value) {
+                                    return FlLine(
+                                      color: Colors.grey.withOpacity(0.3),
+                                      strokeWidth: 0.5,
+                                    );
+                                  },
+                                  getDrawingVerticalLine: (value) {
+                                    return FlLine(
+                                      color: Colors.grey.withOpacity(0.3),
+                                      strokeWidth: 0.5,
+                                    );
+                                  },
+                                ),
                                 lineTouchData: LineTouchData(
                                   touchTooltipData: LineTouchTooltipData(
                                     getTooltipItems: (List<LineBarSpot> touchedSpots) {
@@ -494,11 +512,16 @@ ${l10n.chartDescription}""";
                                     sideTitles: SideTitles(
                                       showTitles: true,
                                       reservedSize: 50,
+                                      interval: 0.5, // Show labels every 50%
                                       getTitlesWidget: (value, meta) {
-                                        return Text(
-                                          '${(value * 100).toStringAsFixed(2)}%',
-                                          style: const TextStyle(fontSize: 10),
-                                        );
+                                        // Only show labels at key intervals for cleaner look
+                                        if (value % 0.5 == 0) {
+                                          return Text(
+                                            '${(value * 100).toInt()}%',
+                                            style: const TextStyle(fontSize: 10),
+                                          );
+                                        }
+                                        return const Text('');
                                       },
                                     ),
                                   ),
@@ -507,7 +530,8 @@ ${l10n.chartDescription}""";
                                       showTitles: true,
                                       reservedSize: 30,
                                       getTitlesWidget: (value, meta) {
-                                        if (value.toInt() % 5 == 0) {
+                                        // Show dates every 7 days (weekly) for cleaner look
+                                        if (value.toInt() % 7 == 0 || value.toInt() == 15) {
                                           DateTime date = _selectedDate
                                               .subtract(
                                                 const Duration(days: 15),
@@ -515,8 +539,10 @@ ${l10n.chartDescription}""";
                                               .add(
                                                 Duration(days: value.toInt()),
                                               );
+                                          // Show day/month abbreviation for better readability
+                                          String dateFormat = l10n.localeName == 'hu' ? 'd/MMM' : 'd/MMM';
                                           return Text(
-                                            DateFormat('M/d').format(date),
+                                            DateFormat(dateFormat, l10n.localeName).format(date),
                                             style: const TextStyle(
                                               fontSize: 10,
                                             ),

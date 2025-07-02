@@ -9,7 +9,7 @@ class AppLocalizationsHu extends AppLocalizations {
   AppLocalizationsHu([String locale = 'hu']) : super(locale);
 
   @override
-  String get appTitle => 'Bioritmikus Kalkulátor';
+  String get appTitle => 'Bioritmus Kalkulátor';
 
   @override
   String get birthDate => 'Születési Dátum';
@@ -34,14 +34,14 @@ class AppLocalizationsHu extends AppLocalizations {
       'Kérjük, válassza ki az elemzendő dátumot';
 
   @override
-  String get biorhythmChart => 'Bioritmikus Grafikon';
+  String get biorhythmChart => 'Bioritmus Grafikon';
 
   @override
-  String get biorhythmAnalysis => 'Bioritmikus Elemzés';
+  String get biorhythmAnalysis => 'Bioritmus Elemzés';
 
   @override
   String get pleaseSelectBirthDate =>
-      'Kérjük, válassza ki a születési dátumát a bioritmikus grafikon megtekintéséhez.';
+      'Kérjük, válassza ki a születési dátumát a bioritmus grafikon megtekintéséhez.';
 
   @override
   String get physical => 'Fizikai';
@@ -66,7 +66,7 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String biorhythmAnalysisFor(String date) {
-    return 'Bioritmikus Elemzés $date dátumra';
+    return 'Bioritmus Elemzés $date dátumra';
   }
 
   @override
@@ -83,7 +83,7 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get chartDescription =>
-      'A grafikon az időbeli bioritmikus ciklusokat mutatja. Érintse meg a vonalakat a pontos értékek megtekintéséhez.';
+      'A grafikon az időbeli bioritmus ciklusokat mutatja. Érintse meg a vonalakat a pontos értékek megtekintéséhez.';
 
   @override
   String get birthdate => 'Szül. dátum';

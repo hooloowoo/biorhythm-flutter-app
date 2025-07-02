@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "appTitle": "Bioritmikus Kalkulátor",
+  "appTitle": "Bioritmus Kalkulátor",
   "birthDate": "Születési Dátum",
   "analysisDate": "Elemzési Dátum",
   "selectBirthDate": "Születési Dátum Kiválasztása",
@@ -8,9 +8,9 @@
   "notSelected": "Nincs kiválasztva",
   "selectBirthDateHelp": "Kérjük, válassza ki a születési dátumát",
   "selectAnalysisDateHelp": "Kérjük, válassza ki az elemzendő dátumot",
-  "biorhythmChart": "Bioritmikus Grafikon",
-  "biorhythmAnalysis": "Bioritmikus Elemzés",
-  "pleaseSelectBirthDate": "Kérjük, válassza ki a születési dátumát a bioritmikus grafikon megtekintéséhez.",
+  "biorhythmChart": "Bioritmus Grafikon",
+  "biorhythmAnalysis": "Bioritmus Elemzés",
+  "pleaseSelectBirthDate": "Kérjük, válassza ki a születési dátumát a bioritmus grafikon megtekintéséhez.",
   "physical": "Fizikai",
   "emotional": "Érzelmi",
   "intellectual": "Szellemi",
@@ -18,7 +18,7 @@
   "medium": "Közepes",
   "low": "Alacsony",
   "analysisDescription": "Elemzés Leírása",
-  "biorhythmAnalysisFor": "Bioritmikus Elemzés {date} dátumra",
+  "biorhythmAnalysisFor": "Bioritmus Elemzés {date} dátumra",
   "@biorhythmAnalysisFor": {
     "placeholders": {
       "date": {
@@ -29,7 +29,7 @@
   "physicalDescription": "A fizikai ciklus befolyásolja az energiáját, erejét és általános fizikai jóllétét.",
   "emotionalDescription": "Az érzelmi ciklus befolyásolja a hangulatát, kreativitását és érzelmi stabilitását.",
   "intellectualDescription": "A szellemi ciklus hatással van az analitikus gondolkodására, döntéshozatalára és mentális tisztaságára.",
-  "chartDescription": "A grafikon az időbeli bioritmikus ciklusokat mutatja. Érintse meg a vonalakat a pontos értékek megtekintéséhez.",
+  "chartDescription": "A grafikon az időbeli bioritmus ciklusokat mutatja. Érintse meg a vonalakat a pontos értékek megtekintéséhez.",
   "birthdate": "Szül. dátum",
   "name": "Név",
   "settings": "Beállítások",
