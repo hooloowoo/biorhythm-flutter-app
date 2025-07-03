@@ -52,15 +52,41 @@ Start your journey to better self-understanding today. Download Biorhythm Calcul
 Health & Fitness
 
 ## Content Rating
-Everyone
+Everyone (No objectionable content, suitable for all ages)
+
+## Privacy & Data Safety
+
+### Data Collection & Usage
+- **Personal Data:** Birth date only (for biorhythm calculations)
+- **Data Location:** Stored locally on device only
+- **Data Sharing:** No personal data shared with third parties
+- **Data Encryption:** Protected by device security
+- **Data Deletion:** Uninstall app to remove all data
+
+### Privacy Policy
+**URL:** https://yourdomain.com/privacy_policy.html  
+*(REQUIRED - Host the privacy_policy.html file before submission)*
+
+### Data Safety Section (Google Play Console)
+- **Data encrypted in transit:** Not applicable (no data transmission)
+- **Data can be deleted:** Yes (uninstall app)
+- **Committed to Play Families Policy:** Yes
+- **Independent security review:** Not performed
+
+### Data Types (for Play Console):
+- **Location:** Not collected
+- **Personal info:** Birth date (not shared)
+- **Financial info:** Not collected
+- **Photos and videos:** Not collected
+- **Contacts:** Not collected
 
 ## Tags/Keywords
-biorhythm, biorhythms, cycles, health, wellness, fitness, self-improvement, tracker, physical, emotional, intellectual, energy, mood, clarity
+biorhythm, biorhythms, cycles, health, wellness, fitness, self-improvement, tracker, physical, emotional, intellectual, energy, mood, clarity, privacy, offline
 
 ## Developer Contact
 Email: [your-email@domain.com]
 Website: [your-website.com]
-Privacy Policy: [privacy-policy-url]
+Privacy Policy: https://yourdomain.com/privacy_policy.html
 
 ## Changelog (Version 1.0.0)
 🎉 Initial release of Biorhythm Calculator

@@ -58,7 +58,23 @@ Health & Fitness / Lifestyle
 4+ (No objectionable content)
 
 ## Privacy Policy
-This app does not collect, store, or transmit any personal data. All calculations are performed locally on your device.
+**Privacy Policy URL:** https://yourdomain.com/privacy_policy.html  
+*(REQUIRED - You must host the privacy_policy.html file online before submission)*
+
+### Privacy Summary
+- **Data Collection:** Birth date only (for biorhythm calculations)
+- **Data Storage:** Local device storage only, no cloud storage
+- **Data Sharing:** No personal data shared with third parties
+- **Tracking:** No user tracking or advertising
+- **Age Appropriate:** Safe for users 4+ years old
+- **GDPR Compliant:** Meets EU privacy requirements
+
+### App Store Privacy Labels
+- **Data Linked to You:** None
+- **Data Used to Track You:** None
+- **Data Not Linked to You:** Diagnostics (crash reports only)
+
+All personal biorhythm data stays private on your device and is never transmitted to external servers.
 
 ## Support Contact
 [Your email address]

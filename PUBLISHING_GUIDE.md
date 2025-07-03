@@ -11,10 +11,14 @@
 - [x] Custom biorhythm app icon created (1024x1024px PNG)
 - [x] All iOS icon sizes generated automatically
 - [x] Localization support (English, Hungarian)
+- [x] **Privacy Policy created** (PRIVACY_POLICY.md, privacy_policy.html)
+- [x] **Android emulator setup and app installed**
+- [x] **Screenshot system ready** (first screenshot taken)
 - [x] Metadata files created
 
 ### ⏳ Remaining Tasks
-- [ ] Take app screenshots
+- [ ] **Take remaining 4 Android screenshots** (see SCREENSHOTS_READY.md)
+- [ ] **Host privacy policy online** (required for app stores)
 - [ ] Create signing key for Android
 - [ ] Set up iOS certificates and provisioning
 - [ ] Archive iOS app in Xcode for App Store submission
@@ -171,6 +175,34 @@ If your iOS submission failed due to invalid app icon:
 2. **Run**: `./fix_ios_icon.sh` for automated fix
 3. **Create**: 1024x1024px PNG app icon in `assets/icon/app_icon.png`
 4. **Rebuild**: iOS app after adding icon
+
+## 🔒 Privacy Policy Requirements
+
+### **IMPORTANT: Both app stores require a privacy policy URL**
+
+You **MUST** host the privacy policy online before submitting to app stores:
+
+1. **Upload `privacy_policy.html`** to your website
+2. **Get the URL** (e.g., `https://yourdomain.com/privacy_policy.html`)
+3. **Add URL to app store listings**
+
+### Privacy Policy Files Created:
+- `PRIVACY_POLICY.md` - Full detailed policy
+- `PRIVACY_POLICY_SIMPLE.md` - User-friendly summary  
+- `privacy_policy.html` - Web-ready version with styling
+
+### Key Privacy Features:
+- ✅ **Local data only** - No cloud storage
+- ✅ **No data sharing** - Information stays on device
+- ✅ **GDPR compliant** - EU privacy rights covered
+- ✅ **Child-friendly** - Safe for all ages
+- ✅ **Transparent** - Clear about what data is used
+
+### Hosting Options:
+- **GitHub Pages** (free): Upload HTML file to repository
+- **Netlify** (free): Drag and drop deployment
+- **Your website**: Add to existing domain
+- **Firebase Hosting** (free): Google's hosting service
 
 ## 💰 Publishing Costs
 - **Google Play**: $25 one-time registration fee
