@@ -7,6 +7,7 @@ import 'dart:math' as math;
 import 'l10n/app_localizations.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const BiorhythmApp());
 }
 
@@ -95,7 +96,12 @@ class _BiorhythmHomePageState extends State<BiorhythmHomePage> {
   }
 
   String _getBiorhythmDescription(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
+    final l10n = AppLocalizations.of(context);
+    
+    // Add null check for localization
+    if (l10n == null) {
+      return 'Localization not available';
+    }
 
     if (_birthDate == null) {
       return l10n.analysisDescription;
@@ -181,7 +187,9 @@ ${l10n.chartDescription}""";
   }
 
   Future<void> _selectBirthDate() async {
-    final l10n = AppLocalizations.of(context)!;
+    final l10n = AppLocalizations.of(context);
+    if (l10n == null) return;
+    
     final DateTime? picked = await showDatePicker(
       context: context,
       initialDate:
@@ -199,7 +207,9 @@ ${l10n.chartDescription}""";
   }
 
   Future<void> _selectDate() async {
-    final l10n = AppLocalizations.of(context)!;
+    final l10n = AppLocalizations.of(context);
+    if (l10n == null) return;
+    
     final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: _selectedDate,
@@ -221,7 +231,8 @@ ${l10n.chartDescription}""";
     BuildContext context,
     String cycleType,
   ) {
-    final l10n = AppLocalizations.of(context)!;
+    final l10n = AppLocalizations.of(context);
+    if (l10n == null) return '';
 
     if (_birthDate == null) return '';
 
@@ -375,7 +386,16 @@ ${l10n.chartDescription}""";
   // Get the analysis for the three days around the peak (day before, day of, day after)
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
+    final l10n = AppLocalizations.of(context);
+    
+    // Add fallback if localization is not available
+    if (l10n == null) {
+      return const Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }
 
     return Scaffold(
       appBar: AppBar(
