@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:math' as math;
+import 'dart:ui' as ui;
 
 import 'l10n/app_localizations.dart';
 
@@ -21,12 +23,52 @@ class BiorhythmApp extends StatefulWidget {
 class _BiorhythmAppState extends State<BiorhythmApp> {
   Locale _locale = const Locale('en');
 
-  void _toggleLanguage() {
-    setState(() {
-      _locale = _locale.languageCode == 'en'
-          ? const Locale('hu')
+  @override
+  void initState() {
+    super.initState();
+    _loadLanguagePreference();
+  }
+
+  // Load language preference from storage, or use device default
+  Future<void> _loadLanguagePreference() async {
+    final prefs = await SharedPreferences.getInstance();
+    final savedLanguage = prefs.getString('selected_language');
+    
+    Locale newLocale;
+    if (savedLanguage != null) {
+      // Use saved language preference
+      newLocale = Locale(savedLanguage);
+    } else {
+      // Get device default language
+      final deviceLocale = ui.PlatformDispatcher.instance.locale;
+      // Check if device language is Hungarian, otherwise default to English
+      newLocale = (deviceLocale.languageCode == 'hu') 
+          ? const Locale('hu') 
           : const Locale('en');
+    }
+    
+    setState(() {
+      _locale = newLocale;
     });
+  }
+
+  // Save language preference to storage
+  Future<void> _saveLanguagePreference(String languageCode) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('selected_language', languageCode);
+  }
+
+  void _toggleLanguage() async {
+    final newLocale = _locale.languageCode == 'en'
+        ? const Locale('hu')
+        : const Locale('en');
+    
+    setState(() {
+      _locale = newLocale;
+    });
+    
+    // Save the new language preference
+    await _saveLanguagePreference(newLocale.languageCode);
   }
 
   @override
@@ -69,6 +111,29 @@ class _BiorhythmHomePageState extends State<BiorhythmHomePage> {
   static const int emotionalCycle = 28;
   static const int intellectualCycle = 33;
 
+  @override
+  void initState() {
+    super.initState();
+    _loadBirthDate();
+  }
+
+  // Save birth date to persistent storage
+  Future<void> _saveBirthDate(DateTime birthDate) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('birth_date', birthDate.toIso8601String());
+  }
+
+  // Load birth date from persistent storage
+  Future<void> _loadBirthDate() async {
+    final prefs = await SharedPreferences.getInstance();
+    final birthDateString = prefs.getString('birth_date');
+    if (birthDateString != null) {
+      setState(() {
+        _birthDate = DateTime.parse(birthDateString);
+      });
+    }
+  }
+
   double _calculateBiorhythm(int cycle, int daysSinceBirth) {
     return math.sin(2 * math.pi * daysSinceBirth / cycle);
   }
@@ -97,7 +162,7 @@ class _BiorhythmHomePageState extends State<BiorhythmHomePage> {
 
   String _getBiorhythmDescription(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-    
+
     // Add null check for localization
     if (l10n == null) {
       return 'Localization not available';
@@ -116,23 +181,23 @@ class _BiorhythmHomePageState extends State<BiorhythmHomePage> {
     );
 
     // Get simple descriptions
-    String physicalDesc = physical > 0.5
+    String physicalDesc = physical > 0.8
         ? l10n.high
-        : physical < -0.5
+        : physical < -0.8
         ? l10n.low
         : physical.abs() < 0.2
         ? l10n.critical
         : l10n.medium;
-    String emotionalDesc = emotional > 0.5
+    String emotionalDesc = emotional > 0.8
         ? l10n.high
-        : emotional < -0.5
+        : emotional < -0.8
         ? l10n.low
         : emotional.abs() < 0.2
         ? l10n.critical
         : l10n.medium;
-    String intellectualDesc = intellectual > 0.5
+    String intellectualDesc = intellectual > 0.8
         ? l10n.high
-        : intellectual < -0.5
+        : intellectual < -0.8
         ? l10n.low
         : intellectual.abs() < 0.2
         ? l10n.critical
@@ -189,7 +254,7 @@ ${l10n.chartDescription}""";
   Future<void> _selectBirthDate() async {
     final l10n = AppLocalizations.of(context);
     if (l10n == null) return;
-    
+
     final DateTime? picked = await showDatePicker(
       context: context,
       initialDate:
@@ -203,13 +268,15 @@ ${l10n.chartDescription}""";
       setState(() {
         _birthDate = picked;
       });
+      // Save the new birth date to persistent storage
+      await _saveBirthDate(picked);
     }
   }
 
   Future<void> _selectDate() async {
     final l10n = AppLocalizations.of(context);
     if (l10n == null) return;
-    
+
     final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: _selectedDate,
@@ -387,14 +454,10 @@ ${l10n.chartDescription}""";
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-    
+
     // Add fallback if localization is not available
     if (l10n == null) {
-      return const Scaffold(
-        body: Center(
-          child: CircularProgressIndicator(),
-        ),
-      );
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
     }
 
     return Scaffold(
